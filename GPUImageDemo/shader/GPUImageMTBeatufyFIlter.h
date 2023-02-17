@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Jacky. All rights reserved.
 //
 
-#import <GPUImage/GPUImageFramework.h>
+#import "GPUImageFramework.h"
 
 @interface GPUImageMTBeatufyFIlter : GPUImageTwoInputFilter
 {
