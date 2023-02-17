@@ -1,0 +1,12 @@
+{
+    "Version": 1,
+    "Type": "Texture2D",
+    "Source": "bz_003.png",
+    "Width": 101,
+    "Height": 104,
+    "WrapS": "Clamp",
+    "WrapT": "Clamp",
+    "WrapR": "Clamp",
+    "MinFilter": "Linear",
+    "MagFilter": "Linear"
+}

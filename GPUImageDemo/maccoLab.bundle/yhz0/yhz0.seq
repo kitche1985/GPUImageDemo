@@ -1,0 +1,14 @@
+{
+    "FPS": 15,
+    "Cache": false,
+    "Version": 2,
+    "Lazyload": true,
+    "LoadFirstTexture": true,
+    "Frames": [
+        "yhz0_000.png",
+        "yhz0_001.png",
+        "yhz0_002.png",
+        "yhz0_003.png"
+    ],
+    "Type": "AnimSeq"
+}

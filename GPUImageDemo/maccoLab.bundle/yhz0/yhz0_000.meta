@@ -1,0 +1,12 @@
+{
+    "WrapS": "Clamp",
+    "WrapR": "Clamp",
+    "Version": 1,
+    "WrapT": "Clamp",
+    "Source": "yhz0_000.png",
+    "MagFilter": "Linear",
+    "Height": 172,
+    "Width": 278,
+    "MinFilter": "Linear",
+    "Type": "Texture2D"
+}

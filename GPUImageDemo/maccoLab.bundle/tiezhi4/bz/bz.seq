@@ -1,0 +1,14 @@
+{
+    "Version": 1,
+    "Type": "AnimSeq",
+    "FPS": 15,
+    "Cache": false,
+    "Lazyload": false,
+    "LoadFirstTexture": true,
+    "Frames": [
+        "bz_000.meta",
+        "bz_001.meta",
+        "bz_002.meta",
+        "bz_003.meta"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "Version": 1,
+    "Type": "AnimSeq",
+    "FPS": 15,
+    "Cache": false,
+    "Lazyload": false,
+    "LoadFirstTexture": true,
+    "Frames": [
+        "hx_000.meta",
+        "hx_001.meta",
+        "hx_002.meta",
+        "hx_003.meta"
+    ]
+}

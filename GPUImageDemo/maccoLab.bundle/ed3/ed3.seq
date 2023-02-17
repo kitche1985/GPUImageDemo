@@ -1,0 +1,31 @@
+{
+    "FPS": 15,
+    "Cache": false,
+    "Version": 2,
+    "Lazyload": true,
+    "LoadFirstTexture": true,
+    "Frames": [
+        "ed3_000.png",
+        "ed3_001.png",
+        "ed3_002.png",
+        "ed3_003.png",
+        "ed3_004.png",
+        "ed3_005.png",
+        "ed3_006.png",
+        "ed3_007.png",
+        "ed3_008.png",
+        "ed3_009.png",
+        "ed3_010.png",
+        "ed3_011.png",
+        "ed3_012.png",
+        "ed3_013.png",
+        "ed3_014.png",
+        "ed3_015.png",
+        "ed3_016.png",
+        "ed3_017.png",
+        "ed3_018.png",
+        "ed3_019.png",
+        "ed3_020.png"
+    ],
+    "Type": "AnimSeq"
+}

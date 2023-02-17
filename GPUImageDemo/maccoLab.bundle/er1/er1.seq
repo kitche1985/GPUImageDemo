@@ -1,0 +1,11 @@
+{
+    "Version": 1,
+    "Type": "AnimSeq",
+    "FPS": 15,
+    "Cache": false,
+    "Lazyload": false,
+    "LoadFirstTexture": true,
+    "Frames": [
+        "er1_000.meta"
+    ]
+}

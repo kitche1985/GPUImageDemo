@@ -1,0 +1,13 @@
+{
+    "Version": 1,
+    "Type": "Texture2D",
+    "Source": "snowFall_0108.png",
+    "Width": 360,
+    "Height": 760,
+    "WrapS": "Clamp",
+    "WrapT": "Clamp",
+    "WrapR": "Clamp",
+    "MinFilter": "Linear",
+    "MagFilter": "Linear",
+    "Uri": "Animation/snowFall/snowFall_0108.meta"
+}

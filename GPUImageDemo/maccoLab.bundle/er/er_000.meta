@@ -1,0 +1,12 @@
+{
+    "Version": 1,
+    "Type": "Texture2D",
+    "Source": "er_000.png",
+    "Width": 458,
+    "Height": 742,
+    "WrapS": "Clamp",
+    "WrapT": "Clamp",
+    "WrapR": "Clamp",
+    "MinFilter": "Linear",
+    "MagFilter": "Linear"
+}

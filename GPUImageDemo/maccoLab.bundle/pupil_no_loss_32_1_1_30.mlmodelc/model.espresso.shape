@@ -1,0 +1,166 @@
+{
+  "layer_shapes" : {
+    "Conv1_relu_output" : {
+      "k" : 8,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "block_1_expand_relu_output" : {
+      "k" : 96,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "output1" : {
+      "k" : 8,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "block_3_depthwise_relu_output" : {
+      "k" : 96,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "image" : {
+      "k" : 1,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "global_average_pooling2d_3_output" : {
+      "k" : 96,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "block_5_add_output" : {
+      "k" : 24,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_2_project_BN_output" : {
+      "k" : 16,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "block_4_add_output" : {
+      "k" : 24,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_6_expand_relu_output" : {
+      "k" : 144,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_3_project_BN_output" : {
+      "k" : 24,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_4_depthwise_relu_output" : {
+      "k" : 144,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "global_average_pooling2d_4_output" : {
+      "k" : 144,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "block_2_add_output" : {
+      "k" : 16,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "block_4_project_BN_output" : {
+      "k" : 24,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_5_expand_relu_output" : {
+      "k" : 144,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_5_project_BN_output" : {
+      "k" : 24,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_3_expand_relu_output" : {
+      "k" : 96,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "block_5_depthwise_relu_output" : {
+      "k" : 144,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_1_depthwise_relu_output" : {
+      "k" : 96,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "expanded_conv_project_BN_output" : {
+      "k" : 16,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "concatenate_2_output" : {
+      "k" : 240,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "block_4_expand_relu_output" : {
+      "k" : 144,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "block_1_project_BN_output" : {
+      "k" : 16,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "expanded_conv_depthwise_relu_output" : {
+      "k" : 8,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "block_2_expand_relu_output" : {
+      "k" : 96,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "block_2_depthwise_relu_output" : {
+      "k" : 96,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    }
+  }
+}

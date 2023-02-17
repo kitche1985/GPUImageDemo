@@ -1,0 +1,13 @@
+{
+    "WrapS": "Clamp",
+    "WrapR": "Clamp",
+    "Version": 1,
+    "WrapT": "Clamp",
+    "Source": "yhz_000.png",
+    "MagFilter": "Linear",
+    "Uri": "Animation/yhz/yhz_000.meta",
+    "Height": 172,
+    "Width": 278,
+    "MinFilter": "Linear",
+    "Type": "Texture2D"
+}

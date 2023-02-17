@@ -1,0 +1,32 @@
+{
+    "Version": 2,
+    "Type": "AnimSeq",
+    "FPS": 15,
+    "Cache": false,
+    "Lazyload": true,
+    "LoadFirstTexture": true,
+    "Frames": [
+        "xh1_000.png",
+        "xh1_001.png",
+        "xh1_002.png",
+        "xh1_003.png",
+        "xh1_004.png",
+        "xh1_005.png",
+        "xh1_006.png",
+        "xh1_007.png",
+        "xh1_008.png",
+        "xh1_009.png",
+        "xh1_010.png",
+        "xh1_011.png",
+        "xh1_012.png",
+        "xh1_013.png",
+        "xh1_014.png",
+        "xh1_015.png",
+        "xh1_016.png",
+        "xh1_017.png",
+        "xh1_018.png",
+        "xh1_019.png",
+        "xh1_020.png",
+        "xh1_021.png"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "WrapS": "Clamp",
+    "WrapR": "Clamp",
+    "Version": 1,
+    "WrapT": "Clamp",
+    "Source": "ed_007.png",
+    "MagFilter": "Linear",
+    "Uri": "Animation/ed/ed_007.meta",
+    "Height": 328,
+    "Width": 336,
+    "MinFilter": "Linear",
+    "Type": "Texture2D"
+}

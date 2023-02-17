@@ -1,0 +1,89 @@
+7767517
+87 100
+Input                    image                    0 1 image
+Scale                    scalerPreprocessor       1 1 image image2 0=3 1=1
+Padding                  padding                  1 1 image2 Conv1_pad_output 1=1 3=1
+Convolution              convolution              1 1 Conv1_pad_output Conv1_relu_output 0=32 1=3 3=2 5=1 6=864 9=1
+ConvolutionDepthWise     convolution1             1 1 Conv1_relu_output expanded_conv_depthwise_relu_output 0=32 1=3 4=-233 5=1 6=288 7=32 9=1
+Convolution              convolution2             1 1 expanded_conv_depthwise_relu_output expanded_conv_project_BN_output 0=16 1=1 4=-233 5=1 6=512
+Convolution              convolution3             1 1 expanded_conv_project_BN_output block_1_expand_relu_output 0=96 1=1 4=-233 5=1 6=1536 9=1
+Padding                  padding1                 1 1 block_1_expand_relu_output block_1_pad_output 1=1 3=1
+ConvolutionDepthWise     convolution4             1 1 block_1_pad_output block_1_depthwise_relu_output 0=96 1=3 3=2 5=1 6=864 7=96 9=1
+Convolution              convolution5             1 1 block_1_depthwise_relu_output block_1_project_BN_output 0=24 1=1 4=-233 5=1 6=2304
+Split                    splitncnn_0              1 2 block_1_project_BN_output block_1_project_BN_output_splitncnn_0 block_1_project_BN_output_splitncnn_1
+Convolution              convolution6             1 1 block_1_project_BN_output_splitncnn_1 block_2_expand_relu_output 0=144 1=1 4=-233 5=1 6=3456 9=1
+ConvolutionDepthWise     convolution7             1 1 block_2_expand_relu_output block_2_depthwise_relu_output 0=144 1=3 4=-233 5=1 6=1296 7=144 9=1
+Convolution              convolution8             1 1 block_2_depthwise_relu_output block_2_project_BN_output 0=24 1=1 4=-233 5=1 6=3456
+BinaryOp                 add                      2 1 block_1_project_BN_output_splitncnn_0 block_2_project_BN_output block_2_add_output
+Convolution              convolution9             1 1 block_2_add_output block_3_expand_relu_output 0=144 1=1 4=-233 5=1 6=3456 9=1
+Split                    splitncnn_1              1 2 block_3_expand_relu_output block_3_expand_relu_output_splitncnn_0 block_3_expand_relu_output_splitncnn_1
+Padding                  padding2                 1 1 block_3_expand_relu_output_splitncnn_1 block_3_pad_output 1=1 3=1
+ConvolutionDepthWise     convolution10            1 1 block_3_pad_output block_3_depthwise_relu_output 0=144 1=3 3=2 5=1 6=1296 7=144 9=1
+Convolution              convolution11            1 1 block_3_depthwise_relu_output block_3_project_BN_output 0=32 1=1 4=-233 5=1 6=4608
+Split                    splitncnn_2              1 2 block_3_project_BN_output block_3_project_BN_output_splitncnn_0 block_3_project_BN_output_splitncnn_1
+Convolution              convolution12            1 1 block_3_project_BN_output_splitncnn_1 block_4_expand_relu_output 0=192 1=1 4=-233 5=1 6=6144 9=1
+ConvolutionDepthWise     convolution13            1 1 block_4_expand_relu_output block_4_depthwise_relu_output 0=192 1=3 4=-233 5=1 6=1728 7=192 9=1
+Convolution              convolution14            1 1 block_4_depthwise_relu_output block_4_project_BN_output 0=32 1=1 4=-233 5=1 6=6144
+BinaryOp                 add1                     2 1 block_3_project_BN_output_splitncnn_0 block_4_project_BN_output block_4_add_output
+Split                    splitncnn_3              1 2 block_4_add_output block_4_add_output_splitncnn_0 block_4_add_output_splitncnn_1
+Convolution              convolution15            1 1 block_4_add_output_splitncnn_1 block_5_expand_relu_output 0=192 1=1 4=-233 5=1 6=6144 9=1
+ConvolutionDepthWise     convolution16            1 1 block_5_expand_relu_output block_5_depthwise_relu_output 0=192 1=3 4=-233 5=1 6=1728 7=192 9=1
+Convolution              convolution17            1 1 block_5_depthwise_relu_output block_5_project_BN_output 0=32 1=1 4=-233 5=1 6=6144
+BinaryOp                 add2                     2 1 block_4_add_output_splitncnn_0 block_5_project_BN_output block_5_add_output
+Convolution              convolution18            1 1 block_5_add_output block_6_expand_relu_output 0=192 1=1 4=-233 5=1 6=6144 9=1
+Split                    splitncnn_4              1 2 block_6_expand_relu_output block_6_expand_relu_output_splitncnn_0 block_6_expand_relu_output_splitncnn_1
+Padding                  padding3                 1 1 block_6_expand_relu_output_splitncnn_1 block_6_pad_output 1=1 3=1
+ConvolutionDepthWise     convolution19            1 1 block_6_pad_output block_6_depthwise_relu_output 0=192 1=3 3=2 5=1 6=1728 7=192 9=1
+Convolution              convolution20            1 1 block_6_depthwise_relu_output block_6_project_BN_output 0=64 1=1 4=-233 5=1 6=12288
+Split                    splitncnn_5              1 2 block_6_project_BN_output block_6_project_BN_output_splitncnn_0 block_6_project_BN_output_splitncnn_1
+Convolution              convolution21            1 1 block_6_project_BN_output_splitncnn_1 block_7_expand_relu_output 0=384 1=1 4=-233 5=1 6=24576 9=1
+ConvolutionDepthWise     convolution22            1 1 block_7_expand_relu_output block_7_depthwise_relu_output 0=384 1=3 4=-233 5=1 6=3456 7=384 9=1
+Convolution              convolution23            1 1 block_7_depthwise_relu_output block_7_project_BN_output 0=64 1=1 4=-233 5=1 6=24576
+BinaryOp                 add3                     2 1 block_6_project_BN_output_splitncnn_0 block_7_project_BN_output block_7_add_output
+Split                    splitncnn_6              1 2 block_7_add_output block_7_add_output_splitncnn_0 block_7_add_output_splitncnn_1
+Convolution              convolution24            1 1 block_7_add_output_splitncnn_1 block_8_expand_relu_output 0=384 1=1 4=-233 5=1 6=24576 9=1
+ConvolutionDepthWise     convolution25            1 1 block_8_expand_relu_output block_8_depthwise_relu_output 0=384 1=3 4=-233 5=1 6=3456 7=384 9=1
+Convolution              convolution26            1 1 block_8_depthwise_relu_output block_8_project_BN_output 0=64 1=1 4=-233 5=1 6=24576
+BinaryOp                 add4                     2 1 block_7_add_output_splitncnn_0 block_8_project_BN_output block_8_add_output
+Split                    splitncnn_7              1 2 block_8_add_output block_8_add_output_splitncnn_0 block_8_add_output_splitncnn_1
+Convolution              convolution27            1 1 block_8_add_output_splitncnn_1 block_9_expand_relu_output 0=384 1=1 4=-233 5=1 6=24576 9=1
+ConvolutionDepthWise     convolution28            1 1 block_9_expand_relu_output block_9_depthwise_relu_output 0=384 1=3 4=-233 5=1 6=3456 7=384 9=1
+Convolution              convolution29            1 1 block_9_depthwise_relu_output block_9_project_BN_output 0=64 1=1 4=-233 5=1 6=24576
+BinaryOp                 add5                     2 1 block_8_add_output_splitncnn_0 block_9_project_BN_output block_9_add_output
+Convolution              convolution30            1 1 block_9_add_output block_10_expand_relu_output 0=384 1=1 4=-233 5=1 6=24576 9=1
+ConvolutionDepthWise     convolution31            1 1 block_10_expand_relu_output block_10_depthwise_relu_output 0=384 1=3 4=-233 5=1 6=3456 7=384 9=1
+Convolution              convolution32            1 1 block_10_depthwise_relu_output block_10_project_BN_output 0=96 1=1 4=-233 5=1 6=36864
+Split                    splitncnn_8              1 2 block_10_project_BN_output block_10_project_BN_output_splitncnn_0 block_10_project_BN_output_splitncnn_1
+Convolution              convolution33            1 1 block_10_project_BN_output_splitncnn_1 block_11_expand_relu_output 0=576 1=1 4=-233 5=1 6=55296 9=1
+ConvolutionDepthWise     convolution34            1 1 block_11_expand_relu_output block_11_depthwise_relu_output 0=576 1=3 4=-233 5=1 6=5184 7=576 9=1
+Convolution              convolution35            1 1 block_11_depthwise_relu_output block_11_project_BN_output 0=96 1=1 4=-233 5=1 6=55296
+BinaryOp                 add6                     2 1 block_10_project_BN_output_splitncnn_0 block_11_project_BN_output block_11_add_output
+Split                    splitncnn_9              1 2 block_11_add_output block_11_add_output_splitncnn_0 block_11_add_output_splitncnn_1
+Convolution              convolution36            1 1 block_11_add_output_splitncnn_1 block_12_expand_relu_output 0=576 1=1 4=-233 5=1 6=55296 9=1
+ConvolutionDepthWise     convolution37            1 1 block_12_expand_relu_output block_12_depthwise_relu_output 0=576 1=3 4=-233 5=1 6=5184 7=576 9=1
+Convolution              convolution38            1 1 block_12_depthwise_relu_output block_12_project_BN_output 0=96 1=1 4=-233 5=1 6=55296
+BinaryOp                 add7                     2 1 block_11_add_output_splitncnn_0 block_12_project_BN_output block_12_add_output
+Convolution              convolution39            1 1 block_12_add_output block_13_expand_relu_output 0=576 1=1 4=-233 5=1 6=55296 9=1
+Split                    splitncnn_10             1 2 block_13_expand_relu_output block_13_expand_relu_output_splitncnn_0 block_13_expand_relu_output_splitncnn_1
+Padding                  padding4                 1 1 block_13_expand_relu_output_splitncnn_1 block_13_pad_output 1=1 3=1
+ConvolutionDepthWise     convolution40            1 1 block_13_pad_output block_13_depthwise_relu_output 0=576 1=3 3=2 5=1 6=5184 7=576 9=1
+Convolution              convolution41            1 1 block_13_depthwise_relu_output block_13_project_BN_output 0=160 1=1 4=-233 5=1 6=92160
+Split                    splitncnn_11             1 2 block_13_project_BN_output block_13_project_BN_output_splitncnn_0 block_13_project_BN_output_splitncnn_1
+Convolution              convolution42            1 1 block_13_project_BN_output_splitncnn_1 block_14_expand_relu_output 0=960 1=1 4=-233 5=1 6=153600 9=1
+ConvolutionDepthWise     convolution43            1 1 block_14_expand_relu_output block_14_depthwise_relu_output 0=960 1=3 4=-233 5=1 6=8640 7=960 9=1
+Convolution              convolution44            1 1 block_14_depthwise_relu_output block_14_project_BN_output 0=160 1=1 4=-233 5=1 6=153600
+BinaryOp                 add8                     2 1 block_13_project_BN_output_splitncnn_0 block_14_project_BN_output block_14_add_output
+Split                    splitncnn_12             1 2 block_14_add_output block_14_add_output_splitncnn_0 block_14_add_output_splitncnn_1
+Convolution              convolution45            1 1 block_14_add_output_splitncnn_1 block_15_expand_relu_output 0=960 1=1 4=-233 5=1 6=153600 9=1
+ConvolutionDepthWise     convolution46            1 1 block_15_expand_relu_output block_15_depthwise_relu_output 0=960 1=3 4=-233 5=1 6=8640 7=960 9=1
+Convolution              convolution47            1 1 block_15_depthwise_relu_output block_15_project_BN_output 0=160 1=1 4=-233 5=1 6=153600
+BinaryOp                 add9                     2 1 block_14_add_output_splitncnn_0 block_15_project_BN_output block_15_add_output
+Convolution              convolution48            1 1 block_15_add_output block_16_expand_relu_output 0=960 1=1 4=-233 5=1 6=153600 9=1
+Pooling                  pooling                  1 1 block_3_expand_relu_output_splitncnn_0 global_average_pooling2d_1_output 0=1 4=1
+Pooling                  pooling1                 1 1 block_6_expand_relu_output_splitncnn_0 global_average_pooling2d_2_output 0=1 4=1
+Pooling                  pooling2                 1 1 block_13_expand_relu_output_splitncnn_0 global_average_pooling2d_3_output 0=1 4=1
+Pooling                  pooling3                 1 1 block_16_expand_relu_output global_average_pooling2d_4_output 0=1 4=1
+Concat                   concat                   4 1 global_average_pooling2d_1_output global_average_pooling2d_2_output global_average_pooling2d_3_output global_average_pooling2d_4_output concatenate_1_output
+Reshape                  Reshape                  1 1 concatenate_1_output concatenate_1_output_reshaped 0=1872
+InnerProduct             innerProduct             1 1 concatenate_1_output_reshaped innerProduct_buffer 0=236 1=1 2=441792
+Reshape                  Reshape1                 1 1 innerProduct_buffer output1 0=1 1=1 2=236
