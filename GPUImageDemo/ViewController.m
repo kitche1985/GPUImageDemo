@@ -10,6 +10,7 @@
 
 #import "GPUImageBeautifyFilterNew.h"
 #import "GPUImageMTBeatufyFIlter.h"
+#import "GPUImageFourMaskFilter.h"
 
 @interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>{
     CGRect oldFrame;
@@ -46,6 +47,16 @@
 //当前选中项
 @property (assign, nonatomic) NSInteger selectIndex;
 
+@property(nonatomic, strong)UIImage * mask1Img;
+@property(nonatomic, strong)UIImage * mask2Img;
+
+@property (strong, nonatomic)GPUImagePicture * mask1;
+
+@property (strong, nonatomic)GPUImagePicture * mask2;
+
+@property (strong, nonatomic)GPUImagePicture * mask3;
+
+@property (strong, nonatomic)GPUImagePicture * mask4;
 @end
 
 @implementation ViewController
@@ -72,6 +83,10 @@
 // 初始化美白
 -(GPUImageFilter *)mopiAndWhite{
 
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"maccoLab" ofType:@"bundle"]];
+    NSString *lutImgStr = [bundle pathForResource:@"lookUp" ofType:@"png"];
+    self.lutImg = [UIImage imageNamed:lutImgStr];
+    
     GPUImageMTBeatufyFIlter * whiteFilter = [[GPUImageMTBeatufyFIlter alloc] init];
 
     self.mopilutPic = [[GPUImagePicture alloc] initWithImage:self.lutImg];
@@ -86,6 +101,42 @@
     return (GPUImageFilter*)whiteFilter;
 }
 
+-(GPUImageFilter*)loadFourMaskEample:(GPUImageFilter*) latestTarget {
+    
+    GPUImageFourMaskFilter * fourMaskFilter = [[GPUImageFourMaskFilter alloc] init];
+    // 上一个Filter处理的结果，对应uniform sampler2D inputImageTexture
+    [latestTarget addTarget:fourMaskFilter atTextureLocation:0];
+    
+    // 从maccoLab这个文件夹下加载lookup.png image的纹理，对应 uniform sampler2D inputImageTexture2，以此类推
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"maccoLab" ofType:@"bundle"]];
+    NSString *mask1Path = [bundle pathForResource:@"lookUp" ofType:@"png"];
+    
+    // 架子啊
+    self.mask1Img = [UIImage imageNamed:mask1Path];
+    self.mask1 = [[GPUImagePicture alloc] initWithImage:self.mask1Img];
+    [self.mask1 addTarget:fourMaskFilter atTextureLocation:1];
+    [self.mask1 processImage];
+    
+    NSString *mask2Path = [bundle pathForResource:@"lookUp" ofType:@"png"];
+    self.mask2Img= [UIImage imageNamed:mask2Path];
+    self.mask2 = [[GPUImagePicture alloc] initWithImage:self.mask2Img];
+    [self.mask2 addTarget:fourMaskFilter atTextureLocation:2];
+    [self.mask2 processImage];
+    
+    NSString *mask3Path = [bundle pathForResource:@"lookUp" ofType:@"png"];
+    UIImage *maskImg3 = [UIImage imageNamed:mask3Path];
+    self.mask3 = [[GPUImagePicture alloc] initWithImage:maskImg3];
+    [self.mask3 addTarget:fourMaskFilter atTextureLocation:3];
+    
+    NSString *mask4Path = [bundle pathForResource:@"lookUp" ofType:@"png"];
+    UIImage *maskImg4 = [UIImage imageNamed:mask4Path];
+    self.mask4 = [[GPUImagePicture alloc] initWithImage:maskImg4];
+    [self.mask4 addTarget:fourMaskFilter atTextureLocation:4];
+    
+    
+    return (GPUImageFilter*)fourMaskFilter;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isFront = true;
@@ -94,11 +145,6 @@
     
 
     
-    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"maccoLab" ofType:@"bundle"]];
-    NSString *lutImgStr = [bundle pathForResource:@"lookUp" ofType:@"png"];
-    self.lutImg = [UIImage imageNamed:lutImgStr];
-    
-    
     GPUImageFilterGroup * filter = [[GPUImageFilterGroup alloc] init];
     GPUImageFilter * pLastFilter;
     
@@ -106,18 +152,25 @@
     GPUImageFilter * orientationFilter = [self fixOrientation];
     pLastFilter = orientationFilter;
     
-    // 磨皮
+  
+
+    
+//     磨皮
     self.moPiFileterNew = [[GPUImageBeautifyFilterNew alloc] init];
     [self.moPiFileterNew setMopiAlpha:self.values[1].floatValue];
     [pLastFilter addTarget:self.moPiFileterNew];
     pLastFilter =(GPUImageFilter *)self.moPiFileterNew;
-    //pLastFilter = moPiFileterNew;
+//    pLastFilter = moPiFileterNew;
     
     
     // 美白
     GPUImageFilter * defaultBeautifyFilter = [self mopiAndWhite];
     [pLastFilter addTarget:defaultBeautifyFilter];
     pLastFilter = defaultBeautifyFilter;
+    
+    GPUImageFilter* fourMaskFileter = [self loadFourMaskEample:defaultBeautifyFilter];
+    [pLastFilter addTarget:fourMaskFileter];
+    pLastFilter = fourMaskFileter;
 
     filter.initialFilters = [[NSArray alloc] initWithObjects:orientationFilter, nil];
     filter.terminalFilter = pLastFilter;
@@ -170,13 +223,17 @@
     largeFrame = CGRectMake(0 - CGRectGetWidth(self.view.frame), 0 - CGRectGetHeight(self.view.frame), 3 * oldFrame.size.width, 3 * oldFrame.size.height);  //3倍放大限制
     
     // 缩放手势
-       UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
-       [filterView addGestureRecognizer:pinchGesture];
-       
-       // 移动手势
-       UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-       [filterView addGestureRecognizer:panGesture];
+   UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
+   [filterView addGestureRecognizer:pinchGesture];
+   
+   // 移动手势
+   UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
+   [filterView addGestureRecognizer:panGesture];
 }
+
+
+
+
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
